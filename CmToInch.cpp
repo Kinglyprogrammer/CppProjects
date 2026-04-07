@@ -7,5 +7,5 @@ int main(){
 	cin>>Value;
 	const double NewValue=Value/2.54;
 	cout<<"The value with inche is:\n"<<NewValue;
-cin.get();
+cin.get(); 
 	return 0;}
