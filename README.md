@@ -1,2 +1,2 @@
 # SimleCalculaterC-
-a calculater which only calculate two numbers 
+A folder which contain all of my cpp projects. 
