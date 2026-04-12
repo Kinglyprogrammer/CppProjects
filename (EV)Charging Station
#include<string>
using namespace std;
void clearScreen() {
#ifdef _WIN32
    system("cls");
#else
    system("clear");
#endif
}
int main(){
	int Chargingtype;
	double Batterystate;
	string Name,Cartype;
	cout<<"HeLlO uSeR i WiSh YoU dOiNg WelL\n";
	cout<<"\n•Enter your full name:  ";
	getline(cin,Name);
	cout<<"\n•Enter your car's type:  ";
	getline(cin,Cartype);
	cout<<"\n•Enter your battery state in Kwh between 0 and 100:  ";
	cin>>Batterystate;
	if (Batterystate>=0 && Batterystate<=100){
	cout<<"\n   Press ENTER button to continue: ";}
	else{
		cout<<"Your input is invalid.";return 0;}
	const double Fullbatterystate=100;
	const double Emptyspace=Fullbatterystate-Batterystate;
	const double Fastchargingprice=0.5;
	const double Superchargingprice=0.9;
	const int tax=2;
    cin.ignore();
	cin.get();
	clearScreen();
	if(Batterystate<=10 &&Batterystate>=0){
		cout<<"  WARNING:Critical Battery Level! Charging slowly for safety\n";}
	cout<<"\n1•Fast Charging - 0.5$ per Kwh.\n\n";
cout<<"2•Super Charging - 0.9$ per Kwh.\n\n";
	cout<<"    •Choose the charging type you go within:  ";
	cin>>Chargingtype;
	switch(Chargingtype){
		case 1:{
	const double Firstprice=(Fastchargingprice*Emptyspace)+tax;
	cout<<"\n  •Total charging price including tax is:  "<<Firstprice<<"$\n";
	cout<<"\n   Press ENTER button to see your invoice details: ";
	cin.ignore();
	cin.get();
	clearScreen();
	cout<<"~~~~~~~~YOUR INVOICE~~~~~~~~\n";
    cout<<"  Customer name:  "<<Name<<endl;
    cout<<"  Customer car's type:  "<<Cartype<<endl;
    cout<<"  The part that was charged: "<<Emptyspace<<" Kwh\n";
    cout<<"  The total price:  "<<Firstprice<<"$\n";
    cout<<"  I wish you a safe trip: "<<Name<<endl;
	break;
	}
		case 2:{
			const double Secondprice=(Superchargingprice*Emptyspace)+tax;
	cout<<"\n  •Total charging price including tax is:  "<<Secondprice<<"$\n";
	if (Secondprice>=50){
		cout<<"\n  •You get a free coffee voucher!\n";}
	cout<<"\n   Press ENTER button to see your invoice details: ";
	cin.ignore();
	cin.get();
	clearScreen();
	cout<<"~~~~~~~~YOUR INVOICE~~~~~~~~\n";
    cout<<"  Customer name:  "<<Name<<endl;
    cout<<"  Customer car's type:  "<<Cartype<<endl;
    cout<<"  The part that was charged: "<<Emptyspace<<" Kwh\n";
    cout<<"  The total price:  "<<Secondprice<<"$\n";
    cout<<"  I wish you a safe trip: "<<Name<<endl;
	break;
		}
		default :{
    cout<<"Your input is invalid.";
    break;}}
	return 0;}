@@ -1,0 +1,77 @@
+#include<iostream>
+#include<cstdlib>
+#include<string>
+using namespace std;
+void clearScreen() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+int main(){
+	int Chargingtype;
+	double Batterystate;
+	string Name,Cartype;
+	cout<<"HeLlO uSeR i WiSh YoU dOiNg WelL\n";
+	cout<<"\n•Enter your full name:  ";
+	getline(cin,Name);
+	cout<<"\n•Enter your car's type:  ";
+	getline(cin,Cartype);
+	cout<<"\n•Enter your battery state in Kwh between 0 and 100:  ";
+	cin>>Batterystate;
+	if (Batterystate>=0 && Batterystate<=100){
+	cout<<"\n   Press ENTER button to continue: ";}
+	else{
+		cout<<"Your input is invalid.";return 0;}
+	const double Fullbatterystate=100;
+	const double Emptyspace=Fullbatterystate-Batterystate;
+	const double Fastchargingprice=0.5;
+	const double Superchargingprice=0.9;
+	const int tax=2;
+    cin.ignore();
+	cin.get();
+	clearScreen();
+	if(Batterystate<=10 &&Batterystate>=0){
+		cout<<"  WARNING:Critical Battery Level! Charging slowly for safety\n";}
+	cout<<"\n1•Fast Charging - 0.5$ per Kwh.\n\n";
+cout<<"2•Super Charging - 0.9$ per Kwh.\n\n";
+	cout<<"    •Choose the charging type you go within:  ";
+	cin>>Chargingtype;
+	switch(Chargingtype){
+		case 1:{
+	const double Firstprice=(Fastchargingprice*Emptyspace)+tax;
+	cout<<"\n  •Total charging price including tax is:  "<<Firstprice<<"$\n";
+	cout<<"\n   Press ENTER button to see your invoice details: ";
+	cin.ignore();
+	cin.get();
+	clearScreen();
+	cout<<"~~~~~~~~YOUR INVOICE~~~~~~~~\n";
+    cout<<"  Customer name:  "<<Name<<endl;
+    cout<<"  Customer car's type:  "<<Cartype<<endl;
+    cout<<"  The part that was charged: "<<Emptyspace<<" Kwh\n";
+    cout<<"  The total price:  "<<Firstprice<<"$\n";
+    cout<<"  I wish you a safe trip: "<<Name<<endl;
+	break;
+	}
+		case 2:{
+			const double Secondprice=(Superchargingprice*Emptyspace)+tax;
+	cout<<"\n  •Total charging price including tax is:  "<<Secondprice<<"$\n";
+	if (Secondprice>=50){
+		cout<<"\n  •You get a free coffee voucher!\n";}
+	cout<<"\n   Press ENTER button to see your invoice details: ";
+	cin.ignore();
+	cin.get();
+	clearScreen();
+	cout<<"~~~~~~~~YOUR INVOICE~~~~~~~~\n";
+    cout<<"  Customer name:  "<<Name<<endl;
+    cout<<"  Customer car's type:  "<<Cartype<<endl;
+    cout<<"  The part that was charged: "<<Emptyspace<<" Kwh\n";
+    cout<<"  The total price:  "<<Secondprice<<"$\n";
+    cout<<"  I wish you a safe trip: "<<Name<<endl;
+	break;
+		}
+		default :{
+    cout<<"Your input is invalid.";
+    break;}}
+	return 0;}
